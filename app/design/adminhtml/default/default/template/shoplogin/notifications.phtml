@@ -1,0 +1,6 @@
+<?php if (!$this->isInitialized()): ?>
+<div class="notification-global">
+    <strong><?php echo $this->helper('shoplogin')->__('Shoplogin has been installed.') ?></strong>
+    <?php echo $this->helper('shoplogin')->__('Please click <a href="%s">here</a> to add your application id.', $this->getManageUrl()) ?>
+</div>
+<?php endif ?>

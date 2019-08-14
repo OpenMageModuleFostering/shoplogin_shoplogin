@@ -1,0 +1,15 @@
+<?php if($this->RecommendationEnabled('homepage_interesting') && $this->getRecommendationLicenseKey()) : ?>
+
+<h2><?php echo $this->__('You might like these products:'); ?></h2>
+<div class="shoplogin-recommendation" data-style="row" data-show="recommend"></div>
+
+<?php endif; ?>
+
+
+
+<?php if($this->RecommendationEnabled('homepage_popular') && $this->getRecommendationLicenseKey() && $this->getClientId() && $this->getClientSecret()) : ?>
+
+<h2><?php echo $this->__('Currently popular products:'); ?></h2>
+<div class="shoplogin-recommendation" data-style="row" data-show="hot"></div>
+
+<?php endif;?>

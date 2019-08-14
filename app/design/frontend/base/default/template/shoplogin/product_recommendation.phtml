@@ -1,0 +1,6 @@
+<?php if($this->RecommendationEnabled('product_viewed') && $this->getRecommendationLicenseKey() && Mage::registry('current_product')) : ?>
+
+<br><h2><?php echo $this->__('Customers who viewed this article also viewed:'); ?></h2>
+<div class="shoplogin-recommendation" data-href="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getProductUrl())); ?>"  data-style="row" data-show="product"></div>
+
+<?php endif;?>

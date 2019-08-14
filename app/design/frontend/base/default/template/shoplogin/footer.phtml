@@ -4,7 +4,8 @@ window.shoploginasyncinit = function() {
   shoplogin.init({
     appid : '<?php echo $this->getClientId(); ?>',
     version : 'magento-<?php echo Mage::getConfig()->getModuleConfig("ShopLogin_ShopLogin")->version; ?>',
-    language : '<?php echo Mage::app()->getLocale()->getDefaultLocale(); ?>'
+    language : '<?php echo Mage::app()->getLocale()->getDefaultLocale(); ?>'<?php if($this->RecommendationEnabled() && $this->getRecommendationLicenseKey()) : ?>,
+    recommendation : '<?php echo $this->getRecommendationLicenseKey(); ?>'<?php endif;?>
   });
 };
 

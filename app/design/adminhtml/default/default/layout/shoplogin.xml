@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Log in with ShopLogin for Magento
+ * https://www.shoplogin.com/for-merchants/
+ * v1.4.0 for Magento
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="notifications">
+            <block type="shoplogin/adminhtml_notifications" name="shoplogin_notifications" template="shoplogin/notifications.phtml" before="-"></block>
+        </reference>
+    </default>
+</layout>

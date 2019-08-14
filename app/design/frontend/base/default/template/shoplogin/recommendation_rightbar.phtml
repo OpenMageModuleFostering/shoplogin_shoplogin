@@ -1,0 +1,10 @@
+<?php if($this->RecommendationEnabled('rightbar_interesting') && $this->getRecommendationLicenseKey()) : ?>
+
+<div class="block">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Interesting products'); ?></span></strong>
+    </div>
+<div class="shoplogin-recommendation" data-style="col" data-show="recommend"></div>
+</div>
+
+<?php endif;?>

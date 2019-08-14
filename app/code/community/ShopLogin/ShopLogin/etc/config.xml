@@ -3,13 +3,13 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.4 for Magento
+ * v1.4.0 for Magento
  */
 -->
 <config>
     <modules>
         <ShopLogin_ShopLogin>
-            <version>0.9.4</version>
+            <version>1.4.0</version>
         </ShopLogin_ShopLogin>
     </modules>
 
@@ -93,11 +93,47 @@
         </layout>
     </frontend>
 
+    <adminhtml>
+      <layout>
+          <updates>
+              <shoplogin>
+                  <file>shoplogin.xml</file>
+              </shoplogin>
+          </updates>
+      </layout>
+    </adminhtml>
+
     <default>
         <shoplogin>
             <settings>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
+                <show_seal>1</show_seal>
             </settings>
+        </shoplogin>
+    </default>
+    <default>
+        <shoplogin>
+            <settings_loginwith>
+                <enabled>1</enabled>
+            </settings_loginwith>
+        </shoplogin>
+    </default>
+    <default>
+        <shoplogin>
+            <settings_wishlist>
+                <enabled>1</enabled>
+            </settings_wishlist>
+        </shoplogin>
+    </default>
+    <default>
+        <shoplogin>
+            <settings_recommendation>
+                <enabled>1</enabled>
+                <homepage_interesting>1</homepage_interesting>
+                <homepage_popular>1</homepage_popular>
+                <rightbar_interesting>1</rightbar_interesting>
+                <product_viewed>1</product_viewed>
+            </settings_recommendation>
         </shoplogin>
     </default>
 </config>

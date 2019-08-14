@@ -1,62 +1,67 @@
 <?php
-    $customerid = Mage::getSingleton('customer/session')->getCustomerId();
-    $lastorderid = Mage::getSingleton('checkout/session')->getLastOrderId();
-    $order = Mage::getSingleton('sales/order');
-    $order->load($lastorderid);
 
-    $ordernumber = $order->getIncrementId();
-    $totalamount = $order->getGrandTotal();
-    $subamount = $order->getSubtotal();
-    $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
-    $shipping = $order->getShippingAmount();
-    $tax = $order->getTaxAmount();
+$customerid = Mage::getSingleton('customer/session')->getCustomerId();
+$lastorderid = Mage::getSingleton('checkout/session')->getLastOrderId();
+$order = Mage::getSingleton('sales/order');
+$order->load($lastorderid);
 
-    $data_token = Mage::getModel('shoplogin/shoplogin')->load($customerid, 'customer_id');
-    $data_token = $data_token->data_token;
+$ordernumber = $order->getIncrementId();
+$totalamount = $order->getGrandTotal();
+$subamount = $order->getSubtotal();
+$currency = Mage::app()->getStore()->getCurrentCurrencyCode();
+$shipping = $order->getShippingAmount();
+$tax = $order->getTaxAmount();
+
+$data_token = Mage::getModel('shoplogin/shoplogin')->load($customerid, 'customer_id');
+$data_token = $data_token->data_token;
+
 ?>
+
 <script>
     // minimum data
     shoplogin_submit_order = new Object();
     shoplogin_submit_order.order_number = '<?php echo $ordernumber; ?>';
+    shoplogin_submit_order.eligible_aff = true;
+    shoplogin_submit_order.amount_aff = '<?php echo $subamount; ?>';
+    shoplogin_submit_order.amount_currency = '<?Php echo $currency; ?>';
+</script>
+
+<?php
+if($this->getIsUserConnected() || ($this->RecommendationEnabled() && $this->getRecommendationLicenseKey()) )
+{
+?>
+<script>
+    // user token
     shoplogin_submit_order.data_token = '<?Php echo $data_token; ?>';
 
     // standard order data
-    shoplogin_submit_order.amount_currency = '<?Php echo $currency; ?>';
     shoplogin_submit_order.amount_total = '<?php echo $totalamount; ?>';
     shoplogin_submit_order.amount_items = '<?php echo $subamount; ?>';
     shoplogin_submit_order.amount_shipping = '<?Php echo $shipping; ?>';
     shoplogin_submit_order.amount_tax = '<?Php echo $tax; ?>';
     shoplogin_submit_order.customer_id = '<?php echo $customerid; ?>';
 
-    // affiliate, set to "true" if order is not eligible for ShopLogin-Affiliate
-    // e.g. if you set up a tracking switch and the traffic came from a different affiliate network
-    shoplogin_submit_order.affiliate_trackingswitch_noprovision = false;
-
+    // order details
+    shoplogin_submit_order.shoplogin_uid = '<?php echo $this->getIsUserConnected(); ?>';
+    shoplogin_submit_order.shopping_cart = new Array();
     <?php
-        // order data (submit only if user is logined or tracking-plus is activated)
-        if($this->getIsUserConnected() || $this->TrackingPlusisEnabled)
-        {
-        ?>
-            // order data
-            shoplogin_submit_order.shoplogin_uid = '<?php echo $is_user_connected; ?>';
-            shoplogin_submit_order.shopping_cart = new Array();
-            <?php
-            $z = 0;
-            foreach($order->getAllItems() as $items)
-            {
-                $product = Mage::getModel('catalog/product')->load($items->getProductId());
-            ?>
-
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>] = new Object();
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].url = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $product->getProductUrl())))); ?>';
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].name = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getName())))); ?>';
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].product_id = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getProductId())))); ?>';
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].quantity = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getQtyToInvoice())))); ?>';
-            shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].price = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '',  Mage::helper('core')->formatCurrency( $items->getPrice() ) )))); ?>';
-            <?php
-            $z++;
-            }
-        }
+    $z = 0;
+    foreach($order->getAllItems() as $items)
+    {
+        $product = Mage::getModel('catalog/product')->load($items->getProductId());
+    ?>
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>] = new Object();
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].url = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $product->getProductUrl())))); ?>';
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].name = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getName())))); ?>';
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].product_id = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getProductId())))); ?>';
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].quantity = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '', $items->getQtyToInvoice())))); ?>';
+    shoplogin_submit_order.shopping_cart[<?php echo $z; ?>].price = '<?php echo addslashes(strip_tags(str_replace('\r', '', str_replace('\n', '',  Mage::helper('core')->formatCurrency( $items->getPrice() ) )))); ?>';
+    <?php
+    $z++;
+    }
     ?>
 </script>
+<?php
+}
+?>
 

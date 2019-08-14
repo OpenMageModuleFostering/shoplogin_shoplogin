@@ -1,15 +1,15 @@
 <?Php
-if(Mage::getStoreConfig('shoplogin/settings_loginwith/enabled') && Mage::getStoreConfig('shoplogin/settings/clientid')  && Mage::getStoreConfig('shoplogin/settings/clientsecret'))
+if(Mage::getStoreConfig('shoplogin/settings_loginwith/enabled') && Mage::getStoreConfig('shoplogin/settings/clientid') && Mage::getStoreConfig('shoplogin/settings/clientsecret'))
 {
 ?>
 
-<br>
+<br><br>
 <div class="col2-set">
-    <div class="buttons-set">
+    <div class="buttons-set;">
         
-        <div class="shoplogin-button" onclick="checkout_loginwithshoplogin()" what-is="true" style="float:right"></div>
-        <div style="float:right; line-height:41px; font-weight:bold;"><?php echo $this->__('TIP: For easy Registration and Login we recommend:'); ?>&nbsp;&nbsp;&nbsp;</div>
-
+    <div class="shoplogin-button" onclick="checkout_loginwithshoplogin()" what-is="true" style="float:right"></div>
+ <div style="float:right; line-height:24px;"><?php echo $this->__('For easy Sign up and Log in we recommend:'); ?>&nbsp;&nbsp;&nbsp;</div>
+    
     </div>
 </div>
 

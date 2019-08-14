@@ -1,5 +1,5 @@
 <_>
-   <form_key>g3j5wUWYJ0qAmoKq</form_key>
+   <form_key>shoplogin</form_key>
    <name>ShopLogin_ShopLogin</name>
    <channel>community</channel>
    <version_ids>
@@ -16,7 +16,7 @@ Visit https://www.shoplogin.com/for-merchants/ for more informations and technic
 Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and insert your App-ID and App Secret in the &quot;ShopLogin&quot;-Tab in your Magento configuration panel. After that you can easily activate the ShopLogin-Features.</description>
    <license>OSL v3.0</license>
    <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
-   <version>0.9.4</version>
+   <version>1.4.0</version>
    <stability>stable</stability>
    <notes>Basis Extension for ShopLogin including the Plugins &quot;Log in with ShopLogin&quot; and &quot;ShopLogin global Wish List&quot;.</notes>
    <authors>

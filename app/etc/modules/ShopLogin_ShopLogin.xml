@@ -3,7 +3,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.4 for Magento
+ * v1.4.0 for Magento
  */
 -->
 <config>
@@ -11,7 +11,7 @@
         <ShopLogin_ShopLogin>
             <active>true</active>
             <codePool>community</codePool>
-            <version>0.9.4</version>
+            <version>1.4.0</version>
         </ShopLogin_ShopLogin>
     </modules>
 </config>

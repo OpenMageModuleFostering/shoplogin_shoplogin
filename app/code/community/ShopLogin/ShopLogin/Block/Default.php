@@ -2,7 +2,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.4 for Magento
+ * v1.4.0 for Magento
  */
 
 class ShopLogin_ShopLogin_Block_Default extends Mage_Core_Block_Template {
@@ -19,22 +19,31 @@ class ShopLogin_ShopLogin_Block_Default extends Mage_Core_Block_Template {
         return $this->_getHelper()->isEnabled();
     }
 
+    public function WishlistEnabled() {
+        return $this->_getHelper()->WishlistEnabled();
+    }
+
+    public function RecommendationEnabled() {
+        return $this->_getHelper()->RecommendationEnabled();
+    }
+
+    public function ShowSeal() {
+        return $this->_getHelper()->ShowSeal();
+    }
+
     public function getClientId()
     {
         return $this->_getHelper()->getClientId();
     }
 
+    public function getRecommendationLicenseKey()
+    {
+        return $this->_getHelper()->getRecommendationLicenseKey();
+    }
+
     public function getClientSecret()
     {
         return $this->_getHelper()->getClientSecret();
-    }
-
-    public function AffiliateisEnabled() {
-        return $this->_getHelper()->AffiliateisEnabled();
-    }
-
-    public function TrackingPlusisEnabled() {
-        return $this->_getHelper()->TrackingPlusisEnabled();
     }
 
     public function getIsUserConnected()

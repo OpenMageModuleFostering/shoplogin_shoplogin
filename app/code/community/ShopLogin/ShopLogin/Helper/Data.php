@@ -2,16 +2,14 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.4 for Magento
+ * v1.4.0 for Magento
  */
 
-class ShopLogin_ShopLogin_Helper_Data  {
+class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     protected $APP_ID;
     protected $APP_SECRET;
-    protected $redirect_url_login;
-    protected $redirect_url_logout;
-    protected $data_url = 'https://data.shoplogin.com/v001/';
+    protected $data_url = 'https://data.shoplogin.com/v1/';
 
     public function isEnabled()
     {
@@ -22,18 +20,43 @@ class ShopLogin_ShopLogin_Helper_Data  {
         return false;
     }
 
-    public function AffiliateisEnabled()
+    public function WishlistEnabled()
     {
-        if(Mage::getStoreConfig('shoplogin/settings_affiliate/enabled'))
+        if(Mage::getStoreConfig('shoplogin/settings_wishlist/enabled'))
         {
             return true;
         }
         return false;
     }
 
-    public function TrackingPlusisEnabled()
+    public function ShowSeal()
     {
-        if(Mage::getStoreConfig('shoplogin/settings_trackingplus/enabled'))
+        if(Mage::getStoreConfig('shoplogin/settings/show_seal'))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function RecommendationEnabled($what = false)
+    {
+        if(!$what && Mage::getStoreConfig('shoplogin/settings_recommendation/enabled'))
+        {
+            return true;
+        }
+        if($what == "product_viewed" && Mage::getStoreConfig('shoplogin/settings_recommendation/product_viewed') && Mage::getStoreConfig('shoplogin/settings_recommendation/enabled'))
+        {
+            return true;
+        }
+        if($what == "rightbar_interesting" && Mage::getStoreConfig('shoplogin/settings_recommendation/rightbar_interesting') && Mage::getStoreConfig('shoplogin/settings_recommendation/enabled'))
+        {
+            return true;
+        }
+        if($what == "homepage_popular" && Mage::getStoreConfig('shoplogin/settings_recommendation/homepage_popular') && Mage::getStoreConfig('shoplogin/settings_recommendation/enabled'))
+        {
+            return true;
+        }
+        if($what == "homepage_interesting" && Mage::getStoreConfig('shoplogin/settings_recommendation/homepage_interesting') && Mage::getStoreConfig('shoplogin/settings_recommendation/enabled'))
         {
             return true;
         }
@@ -45,6 +68,11 @@ class ShopLogin_ShopLogin_Helper_Data  {
         return Mage::getStoreConfig('shoplogin/settings/clientid');
     }
 
+    public function getRecommendationLicenseKey()
+    {
+        return Mage::getStoreConfig('shoplogin/settings_recommendation/licensekey');
+    }
+
     public function getClientSecret()
     {
         return Mage::getStoreConfig('shoplogin/settings/clientsecret');
@@ -52,12 +80,16 @@ class ShopLogin_ShopLogin_Helper_Data  {
 
     public function getIsUserConnected()
     {
-     // is the session-user connected with ShopLogin?
+     // hier wird abgefragt ob der aktuelle User bereits mit ShopLogin über die Tabelle verknüpft ist.
+
      if(Mage::getSingleton('customer/session')->isLoggedIn())
      {
+
         $customer = Mage::getSingleton('customer/session')->getCustomer();
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
-        $results = $read->fetchAll() ->from(Mage::getSingleton('core/resource')->getTableName('shoplogin_customer')) ->where("customer_id='?'", $customer->getId());
+        $query = $read->select()->from(Mage::getSingleton('core/resource')->getTableName('shoplogin_customer')) ->where("customer_id=?", $customer->getId());
+        $results = $read->fetchAll($query);
+
         if (count($results) && isset($results[0]['shoplogin_id']))
         {
             return $results[0]['shoplogin_id'];
@@ -66,7 +98,7 @@ class ShopLogin_ShopLogin_Helper_Data  {
      return false;
     }
 
-    public function init($APP_ID = false, $APP_SECRET = false, $redirect_url_login = 'auto', $redirect_url_logout = 'auto')
+    public function init($APP_ID = false, $APP_SECRET = false)
     {
 
         if ( !function_exists('json_encode') ) {
@@ -82,14 +114,12 @@ class ShopLogin_ShopLogin_Helper_Data  {
         }
         $this->appid = $APP_ID;
         $this->secret = $APP_SECRET;
-        $this->redirect_url_login = $redirect_url_login;
-        $this->redirect_url_logout = $redirect_url_logout;
-        
-        $this->auto_login_logout();
     }
 
     public function get_user_isauthorized($signed_request = false)
     {
+        // hier werden die Basisdaten des Users (eMail, Vorname, Nachame, Token) mit Hilfe des AppSecret aus dem verschlüsselten Cookie herausgelesen
+
         if(isset($_COOKIE['shoplogin_'.$this->appid]) && $_COOKIE['shoplogin_'.$this->appid])
         {
             $result = $this->parse_signed_request($_COOKIE['shoplogin_'.$this->appid], $this->secret);
@@ -111,6 +141,8 @@ class ShopLogin_ShopLogin_Helper_Data  {
 
     public function get_address_fromuser($addon='')
     {
+        // Helper-Klasse, wenn User per Cookie authentifiziert, dann Adresse per API abfragen
+
         $user = $this->get_user_isauthorized();
         if($user)
         {
@@ -123,6 +155,8 @@ class ShopLogin_ShopLogin_Helper_Data  {
 
     public function get_address_fromtoken($data_token = '', $addon='')
     {
+        // hier wird die API mit dem Token aus dem Cookie abgefragt, bei Erfolg liefert diese die Adressdaten des Users zurück
+
         if(strlen($data_token) != 74)
         {
             return json_decode(json_encode(array('authorized'=>false, 'error'=>'data_token_invalid')));
@@ -136,93 +170,11 @@ class ShopLogin_ShopLogin_Helper_Data  {
         return $temp;
     }
 
-    public function do_login($typ = 'address', $state = '', $redirect_url = 'auto')
-    {
-        header("LOCATION:".$this->get_login_url($typ, $state, $redirect_url));
-    }
-
-    public function do_logout($state = '', $redirect_url = 'auto')
-    {
-        header("LOCATION:".$this->get_logout_url($state, $redirect_url));
-    }
-
-    public function get_login_url($typ = 'address', $state = '', $redirect_url = 'auto')
-    {
-        if(!in_array($typ, array('address', 'login'))) { $typ = 'address'; }
-        return 'https://www.shoplogin.com/account/?appid='.$this->appid.'&version=1&callback=redirect&method=connect&action='.$typ.'&redirect='.rawurlencode($redirect_url).'&state='.rawurlencode($state);
-    }
-
-    public function get_logout_url($state = '', $redirect_url = 'auto')
-    {
-        return 'https://www.shoplogin.com/account/?appid='.$this->appid.'&version=1&callback=redirect&method=connect&action=logout&redirect='.rawurlencode($redirect_url).'&state='.rawurlencode($state);
-    }
-
-    protected function auto_login_logout()
-    {
-        $domain = '';
-        $accesscode = '';
-        $authorized = '';
-        $redirect = '';
-
-        if(isset($_GET['sl_domain']))
-        {
-            $domain = $_GET['sl_domain'];
-        }
-        if(isset($_GET['sl_access']))
-        {
-            $accesscode = $_GET['sl_access'];
-        }
-        if(isset($_GET['sl_authorized']))
-        {
-            $authorized = $_GET['sl_authorized'];
-        }
-        if($authorized == 'false' || $authorized == 'true')
-        {
-            $redirect = $this->redirect_url_logout;
-            setcookie('shoplogin_'.$this->appid, '', 0, '/', $domain);
-            $_COOKIE['shoplogin_'.$this->appid] = '';
-        }
-        if($authorized == 'true' and $accesscode)
-        {
-              $redirect = $this->redirect_url_login;
-              if($this->get_user_isauthorized($accesscode))
-              {
-                  setcookie('shoplogin_'.$this->appid, $accesscode, 0, '/', $domain);
-                  $_COOKIE['shoplogin_'.$this->appid] = $accesscode;
-              }
-        }
-
-        if($domain || $accesscode || $authorized)
-        {
-            if( ($authorized == 'true' && $this->redirect_url_login == 'auto') )
-            {
-                $redirect = $this->clean_url(getenv('REQUEST_URI'));
-            }
-            if( ($authorized == 'false' && $this->redirect_url_logout == 'auto') )
-            {
-                $redirect = $this->clean_url(getenv('REQUEST_URI'));
-            }
-            header('LOCATION:'.$redirect);
-        }
-    }
-
-    protected function clean_url($url)
-    {
-        foreach(array('sl_access', 'sl_authorized', 'sl_domain') as $key)
-        {
-            if(isset($_GET[$key]))
-            {
-                $url = str_replace($key.'='.$_GET[$key], '', $url);
-                $url = str_replace('&&', '&', $url);
-            }
-        }
-        $url = str_replace('?&', '?', $url);
-        if(substr($url, strlen($url)-1) =='?' || substr($url, strlen($url)-1) == '&') { $url = substr($url,0, strlen($url)-1); }
-        return $url;
-    }
-
     protected function do_curl($url)
     {
+        // Abfrage der Api mit CURL mit einigen zusätzlichen Parametern wie Version etc.
+        // sowie einer Checksumme bestehend aus der "komplettenUrl#AppSecret"
+
         $url = $url."&version=magento-".Mage::getConfig()->getModuleConfig("ShopLogin_ShopLogin")->version."&shop_system=magento-".Mage::getVersion();
         $url = $url.'&checksum='.md5($url.'#'.$this->secret);
         $ch = curl_init();
@@ -230,15 +182,17 @@ class ShopLogin_ShopLogin_Helper_Data  {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-php-001');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.0');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $result = curl_exec($ch);
         curl_close($ch);
         return $result;
     }
 
-    protected function parse_signed_request($signed_request, $APP_SECRET) {
+    protected function parse_signed_request($signed_request, $APP_SECRET)
+    {
         $temp = explode('.', $signed_request);
         if(!is_array($temp) || count($temp) != 2)
         {
@@ -254,12 +208,10 @@ class ShopLogin_ShopLogin_Helper_Data  {
         return null;
     }
 
-    protected function base64_url_decode($input) {
+    protected function base64_url_decode($input)
+    {
         return base64_decode(strtr($input, '-_', '+/'));
     }
-
-
-
 
 }
 

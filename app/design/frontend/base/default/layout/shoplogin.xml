@@ -3,10 +3,24 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.4 for Magento
+ * v1.4.0 for Magento
  */
 -->
-<layout version="0.9.4">
+<layout version="1.0.6">
+
+    <default translate="label">
+        <reference name="before_body_end">
+            <block type="shoplogin/default" after="-" name="shoplogin.footer" template="shoplogin/footer.phtml" />
+        </reference>
+        <reference name="head">
+            <block type="shoplogin/default" name="shoplogin.header" template="shoplogin/header.phtml" />
+        </reference>
+        <reference name="right">
+            <block type="shoplogin/default" name="shoplogin.recommendation_rightbar" template="shoplogin/recommendation_rightbar.phtml" />
+            <block type="shoplogin/default" name="shoplogin.seal" template="shoplogin/seal.phtml" />
+        </reference>
+    </default>
+
     <customer_account_login translate="label">
         <reference name="content">
             <block type="core/template" name="shoplogin.login.button" template="shoplogin/button.phtml" after="customer_form_login" />
@@ -21,21 +35,28 @@
         </reference>
     </checkout_onepage_index>
 
-    <default translate="label">
-        <reference name="before_body_end">
-            <block type="shoplogin/default" after="-" name="shoplogin.footer" template="shoplogin/footer.phtml" />
+    <customer_account_create>
+        <reference name="content">
+            <block type="core/template" name="shoplogin.login.button" template="shoplogin/button_only.phtml"  />
         </reference>
-        <reference name="head">
-            <block type="shoplogin/default" name="shoplogin.header" template="shoplogin/header.phtml" />
+    </customer_account_create>
+
+    <cms_index_index translate="label">
+        <reference name="content">
+            <block type="shoplogin/default" name="shoplogin.recommendation_homepage" template="shoplogin/recommendation_homepage.phtml" />
         </reference>
-    </default>
+    </cms_index_index>
 
    <catalog_product_view translate="label">
+        <reference name="product.info.addto">
+            <action method="setTemplate"><template>shoplogin/catalog/product/view/addto.phtml</template></action>
+            <block type="shoplogin/default" name="shoplogin.wishlist_button" as="shoplogin_wishlist" template="shoplogin/add_wishlist_button.phtml" />
+        </reference>
         <reference name="head">
             <block type="shoplogin/default" after="shoplogin.header" name="shoplogin.product_header" template="shoplogin/product_header.phtml" />
         </reference>
-        <reference name="product.info.addtocart">
-            <block type="shoplogin/default" name="shoplogin.add_wishlist_button" template="shoplogin/add_wishlist_button.phtml" />
+        <reference name="product.info.additional">
+            <block type="shoplogin/default" name="shoplogin.product_recommendation" template="shoplogin/product_recommendation.phtml" />
         </reference>
     </catalog_product_view>
 
