@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/ShopLogin_ShopLogin",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "Basis Extension for ShopLogin including the Plugins "Log in with ShopLogin" and "ShopLogin global Wish List".",
+    "authors": [
+    {
+        "name": "Shoplogin",
+        "email": "developers@shoplogin.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

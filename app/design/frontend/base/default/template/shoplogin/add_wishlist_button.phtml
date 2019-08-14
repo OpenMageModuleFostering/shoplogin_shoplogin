@@ -1,0 +1,3 @@
+<?php if(Mage::getStoreConfig('shoplogin/settings_wishlist/enabled') && Mage::registry('current_product')) : ?>
+<br><br><div class="shoplogin-wishlist" what-is="true" data-href="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getProductUrl())); ?>"></div>
+<?php endif;?>

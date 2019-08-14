@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Log in with ShopLogin for Magento
+ * https://www.shoplogin.com/for-merchants/
+ * v0.9.1 for Magento
+ */
+-->
+<config>
+    <modules>
+        <ShopLogin_ShopLogin>
+            <active>true</active>
+            <codePool>community</codePool>
+            <version>0.9.1</version>
+        </ShopLogin_ShopLogin>
+    </modules>
+</config>

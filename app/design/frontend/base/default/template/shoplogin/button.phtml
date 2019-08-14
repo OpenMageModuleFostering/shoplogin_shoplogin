@@ -1,0 +1,42 @@
+<?Php
+if(Mage::getStoreConfig('shoplogin/settings_loginwith/enabled') && Mage::getStoreConfig('shoplogin/settings/clientid')  && Mage::getStoreConfig('shoplogin/settings/clientsecret'))
+{
+?>
+
+<br>
+<div class="col2-set account-login">
+    <div class="buttons-set">
+        
+        <div class="shoplogin-button" onclick="account_loginwithshoplogin()" what-is="true" style="float:right"></div>
+        <div style="float:right; line-height:41px; font-weight:bold;"><?php echo $this->__('TIP: For easy Registration and Login we recommend:'); ?>&nbsp;&nbsp;&nbsp;</div>
+
+    </div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+
+function account_loginwithshoplogin()
+{
+
+    shoplogin.dialog_login("login",
+            function(response)
+            {
+            if(response && response.authorized)
+            {
+
+
+                        document.location.href="<?php echo $this->getUrl('shoplogin/customer/login')?>?redirect=<?php echo base64_encode($this->helper('core/url')->getCurrentUrl())?>";
+
+
+            }
+
+            }
+      );
+
+}
+
+</script>
+
+<?php
+}
+?>

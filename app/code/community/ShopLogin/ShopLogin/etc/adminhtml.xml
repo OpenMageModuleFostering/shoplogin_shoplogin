@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Log in with ShopLogin for Magento
+ * https://www.shoplogin.com/for-merchants/
+ * v0.9.1 for Magento
+ */
+ -->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <shoplogin translate="title">
+                                        <title>ShopLogin</title>
+                                    </shoplogin>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Log in with ShopLogin for Magento
+ * https://www.shoplogin.com/for-merchants/
+ * v0.9.1 for Magento
+ */
+-->
+<config>
+    <modules>
+        <ShopLogin_ShopLogin>
+            <version>0.9.1</version>
+        </ShopLogin_ShopLogin>
+    </modules>
+
+    <global>
+        <models>
+            <shoplogin>
+                <class>ShopLogin_ShopLogin_Model</class>
+                <resourceModel>shoplogin_mysql4</resourceModel>
+            </shoplogin>
+            <shoplogin_mysql4>
+                <class>ShopLogin_ShopLogin_Model_Resource</class>
+                <entities>
+                    <shoplogin>
+                        <table>shoplogin_customer</table>
+                    </shoplogin>
+                </entities>
+            </shoplogin_mysql4>
+        </models>
+
+        <resources>
+            <shoplogin_setup>
+                <setup>
+                    <module>ShopLogin_ShopLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </shoplogin_setup>
+            <shoplogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </shoplogin_write>
+            <shoplogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </shoplogin_read>
+        </resources>
+
+        <blocks>
+            <shoplogin>
+                <class>ShopLogin_ShopLogin_Block</class>
+            </shoplogin>
+        </blocks>
+
+        <helpers>
+            <shoplogin>
+                <class>ShopLogin_ShopLogin_Helper</class>
+            </shoplogin>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <shoplogin>
+                <use>standard</use>
+                <args>
+                    <module>ShopLogin_ShopLogin</module>
+                    <frontName>shoplogin</frontName>
+                </args>
+            </shoplogin>
+        </routers>
+
+        <translate>
+            <modules>
+                <ShopLogin_ShopLogin>
+                    <files>
+                        <default>ShopLogin_ShopLogin.csv</default>
+                    </files>
+                </ShopLogin_ShopLogin>
+            </modules>
+        </translate>
+
+        <layout>
+            <updates>
+                <shoplogin>
+                    <file>shoplogin.xml</file>
+                </shoplogin>
+            </updates>
+        </layout>
+    </frontend>
+
+    <default>
+        <shoplogin>
+            <settings>
+                <enabled>0</enabled>
+            </settings>
+        </shoplogin>
+    </default>
+</config>

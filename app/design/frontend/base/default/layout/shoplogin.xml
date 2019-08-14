@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Log in with ShopLogin for Magento
+ * https://www.shoplogin.com/for-merchants/
+ * v0.9.1 for Magento
+ */
+-->
+<layout version="0.9.1">
+    <customer_account_login translate="label">
+        <reference name="content">
+            <block type="core/template" name="shoplogin.login.button" template="shoplogin/button.phtml" after="customer_form_login" />
+        </reference>
+    </customer_account_login>
+
+    <checkout_onepage_index translate="label">
+        <reference name="checkout.onepage.login">
+            <action method="setTemplate">
+                <template>shoplogin/checkout_login.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+
+    <default translate="label">
+        <reference name="before_body_end">
+            <block type="shoplogin/default" after="-" name="shoplogin.footer" template="shoplogin/footer.phtml" />
+        </reference>
+        <reference name="head">
+            <block type="shoplogin/default" name="shoplogin.header" template="shoplogin/header.phtml" />
+        </reference>
+    </default>
+
+   <catalog_product_view translate="label">
+        <reference name="head">
+            <block type="shoplogin/default" after="shoplogin.header" name="shoplogin.product_header" template="shoplogin/product_header.phtml" />
+        </reference>
+        <reference name="product.info.addtocart">
+            <block type="shoplogin/default" name="shoplogin.add_wishlist_button" template="shoplogin/add_wishlist_button.phtml" />
+        </reference>
+    </catalog_product_view>
+
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="shoplogin/default" name="shoplogin.checkout_success" template="shoplogin/checkout_success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+
+</layout>

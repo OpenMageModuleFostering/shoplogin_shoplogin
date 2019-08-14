@@ -1,0 +1,18 @@
+<div id="shoplogin-root"></div>
+<script language="JavaScript" type="text/javascript">
+window.shoploginasyncinit = function() {
+  shoplogin.init({
+    appid : '<?php echo $this->getClientId(); ?>',
+    version : 'magento-<?php echo Mage::getConfig()->getModuleConfig("ShopLogin_ShopLogin")->version; ?>',
+    language : '<?php echo Mage::app()->getLocale()->getDefaultLocale(); ?>'
+  });
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "//connect.shoplogin.com/connect.js"
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'shoplogin-connect'));
+</script>

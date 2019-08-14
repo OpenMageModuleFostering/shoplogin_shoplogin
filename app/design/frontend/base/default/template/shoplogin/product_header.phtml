@@ -1,0 +1,10 @@
+<?php if (Mage::registry('current_product')) : ?>
+<meta property="shoplogin:article_url" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getProductUrl())); ?>" />
+<meta property="shoplogin:article_name" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getName())); ?>" />
+<meta property="shoplogin:article_product_id" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getId())); ?>" />
+<meta property="shoplogin:article_description" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getShortDescription())); ?>" />
+<meta property="shoplogin:article_image" content="<?php echo str_replace('"', '&quot;', strip_tags(Mage::helper('catalog/image')->init(Mage::registry('current_product'), 'image'))); ?>" />
+<meta property="shoplogin:article_price" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::helper('core')->formatCurrency(Mage::registry('current_product')->getFinalPrice()))); ?>" />
+<meta property="shoplogin:article_sku" content="<?php echo str_replace('"', '&quot;', strip_tags( Mage::registry('current_product')->getSku())); ?>" />
+<meta property="shoplogin:article_instock" content="<?php echo (int)Mage::registry('current_product')->isSaleable(); ?>" />
+<?php endif;?>
