@@ -3,7 +3,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v1.4.0 for Magento
+ * v1.4.1 for Magento
  */
 -->
 <config>
@@ -24,7 +24,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <comment><![CDATA[Register your Online Store free of charge in the ShopLogin.com Merchant area (<a href="https://www.shoplogin.com/account/merchant/" target="_blank">Log in</a> or <a href="https://www.shoplogin.com/register/?goto=merchant" target="_blank">Register</a>) and insert your App ID and App Secret here. For more information about the correct integration please visit <a href="https://www.shoplogin.com/integration/" target="_blank">https://www.shoplogin.com/integration/</a> for more details. <iframe src="https://www.shoplogin.com/moduladmin/?pluginref=magentoconnect&version=magento-1.4.0" frameborder=0 width=1 height=1></iframe>]]>
+                    <comment><![CDATA[Register your Online Store free of charge in the ShopLogin.com Merchant area (<a href="https://www.shoplogin.com/account/merchant/" target="_blank">Log in</a> or <a href="https://www.shoplogin.com/register/?goto=merchant" target="_blank">Register</a>) and insert your App ID and App Secret here. For more information about the correct integration please visit <a href="https://www.shoplogin.com/integration/" target="_blank">https://www.shoplogin.com/integration/</a> for more details. <iframe src="https://www.shoplogin.com/moduladmin/?pluginref=magentoconnect&version=magento-1.4.1" frameborder=0 width=1 height=1></iframe>]]>
                     </comment>
                     <fields>
                         <clientid translate="label">

@@ -2,7 +2,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v1.4.0 for Magento
+ * v1.4.1 for Magento
  */
 
 class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
@@ -182,7 +182,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.0');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.1');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
