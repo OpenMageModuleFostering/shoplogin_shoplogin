@@ -1,9 +1,4 @@
 <?php
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
 
 $installer = $this;
 $installer->startSetup();
@@ -19,4 +14,5 @@ UNIQUE KEY `shoplogin_id` (`shoplogin_id`)
 ");
 
 $installer->endSetup();
+
 ?>

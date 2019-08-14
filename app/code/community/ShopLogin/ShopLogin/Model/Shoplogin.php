@@ -1,9 +1,4 @@
 <?php
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
 
 class ShopLogin_ShopLogin_Model_Shoplogin extends Mage_Core_Model_Abstract
 {

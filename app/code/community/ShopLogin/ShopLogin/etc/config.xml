@@ -1,15 +1,8 @@
 <?xml version="1.0"?>
-<!--
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
--->
 <config>
     <modules>
         <ShopLogin_ShopLogin>
-            <version>1.4.2</version>
+            <version>1.4.4</version>
         </ShopLogin_ShopLogin>
     </modules>
 

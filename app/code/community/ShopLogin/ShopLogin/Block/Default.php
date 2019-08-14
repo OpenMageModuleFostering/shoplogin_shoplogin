@@ -1,9 +1,4 @@
 <?php
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
 
 class ShopLogin_ShopLogin_Block_Default extends Mage_Core_Block_Template {
     private $_helper;
@@ -53,3 +48,5 @@ class ShopLogin_ShopLogin_Block_Default extends Mage_Core_Block_Template {
     }
 
 }
+
+?>

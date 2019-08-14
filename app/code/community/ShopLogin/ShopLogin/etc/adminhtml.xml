@@ -1,11 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
- -->
 <config>
     <acl>
         <resources>

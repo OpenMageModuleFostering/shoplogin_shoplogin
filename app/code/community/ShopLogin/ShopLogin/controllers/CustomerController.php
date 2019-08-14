@@ -1,9 +1,4 @@
 <?php
-/*
- * Log in with ShopLogin for Magento
- * https://www.shoplogin.com/for-merchants/
- * v1.4.2 for Magento
- */
 
 class ShopLogin_ShopLogin_CustomerController extends Mage_Core_Controller_Front_Action
 {
@@ -316,4 +311,5 @@ class ShopLogin_ShopLogin_CustomerController extends Mage_Core_Controller_Front_
         $this->_redirectUrl($session->getBeforeAuthUrl(true));
     }
 }
+
 ?>
