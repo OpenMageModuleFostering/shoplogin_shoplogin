@@ -18,8 +18,8 @@ class ShopLogin_ShopLogin_Block_Default extends Mage_Core_Block_Template {
         return $this->_getHelper()->WishlistEnabled();
     }
 
-    public function RecommendationEnabled() {
-        return $this->_getHelper()->RecommendationEnabled();
+    public function RecommendationEnabled($what = false) {
+        return $this->_getHelper()->RecommendationEnabled($what);
     }
 
     public function ShowSeal() {

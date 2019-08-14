@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>ShopLogin_ShopLogin</name>
-    <version>1.4.6</version>
+    <version>1.4.7</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
@@ -27,10 +27,10 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                         <dir name="Adminhtml">
                             <file name="Notifications.php" hash="dfc6140694dfc535892c0457554672ee"/>
                         </dir>
-                        <file name="Default.php" hash="e25ef68850ec94eaf2fd97ca8d68eb75"/>
+                        <file name="Default.php" hash="74c5d38d02edcd608f85d4eecbfd4399"/>
                       </dir>
                       <dir name="Helper">
-                          <file name="Data.php" hash="d9c0ed509fdb82c6a9601159e9e1a415"/>
+                          <file name="Data.php" hash="12a3f4ba6d9180a08a3d893e716987df"/>
                       </dir>
                       <dir name="Model">
                           <file name="Shoplogin.php" hash="07b8aeb66d14a1f4dca8a53e2bc02182"/>
@@ -40,12 +40,12 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                       </dir>
                       <dir name="etc">
                           <file name="adminhtml.xml" hash="3fcfe128c0da57a29dfdd47b03172d79"/>
-                          <file name="config.xml" hash="c87bd19b35b13bce7c73497e2186d04a"/>
-                          <file name="system.xml" hash="22c2dfd70f011ab1a199aca63d76aaf6"/>
+                          <file name="config.xml" hash="b31030f9c7515f9fdc7ce8bc614e882f"/>
+                          <file name="system.xml" hash="2d25c54aa213c21495fd26a401b79324"/>
                       </dir>
                       <dir name="sql">
                           <dir name="shoplogin_setup">
-                              <file name="mysql4-install-1.4.6.php" hash="0a3df1f0d5588d55211f78d322b09962"/>
+                              <file name="mysql4-install-1.4.7.php" hash="0a3df1f0d5588d55211f78d322b09962"/>
                           </dir>
                       </dir>
                   </dir>
@@ -53,7 +53,7 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
           </target>
           <target name="mageetc">
               <dir name="modules">
-                  <file name="ShopLogin_ShopLogin.xml" hash="0f2146f7cca0eab8737a0b4579d64588"/>
+                  <file name="ShopLogin_ShopLogin.xml" hash="06774df01c29446b70b2bb9913880736"/>
               </dir>
           </target>
           <target name="magelocale">
