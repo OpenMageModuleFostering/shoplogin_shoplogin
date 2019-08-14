@@ -79,7 +79,21 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function getRecommendationLicenseKey()
     {
-        return Mage::getStoreConfig('shoplogin/settings_recommendation/licensekey');
+        $domain = @getenv("HTTP_HOST");
+        if(!$domain) { $domain = @getenv("HTTP_X_FORWARDED_HOST"); }
+        $clientids = explode("_", Mage::getStoreConfig('shoplogin/settings_recommendation/licensekey'));
+        if(count($clientids) == 1)
+        {
+          return $clientids[0];
+        }
+        foreach($clientids as $k)
+        {
+          $details = explode(":", $k);
+          if(substr_count($details[0],$domain) || substr_count($domain, $details[0]))
+          {
+            return $details[1];
+          }
+        }
     }
 
     public function getClientSecret()
@@ -205,7 +219,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.5');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.6');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 

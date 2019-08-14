@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>ShopLogin_ShopLogin</name>
-    <version>1.4.5</version>
+    <version>1.4.6</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
@@ -30,7 +30,7 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                         <file name="Default.php" hash="e25ef68850ec94eaf2fd97ca8d68eb75"/>
                       </dir>
                       <dir name="Helper">
-                          <file name="Data.php" hash="4095922bd7f5f9c4d2cfb1072f353563"/>
+                          <file name="Data.php" hash="d9c0ed509fdb82c6a9601159e9e1a415"/>
                       </dir>
                       <dir name="Model">
                           <file name="Shoplogin.php" hash="07b8aeb66d14a1f4dca8a53e2bc02182"/>
@@ -40,12 +40,12 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                       </dir>
                       <dir name="etc">
                           <file name="adminhtml.xml" hash="3fcfe128c0da57a29dfdd47b03172d79"/>
-                          <file name="config.xml" hash="97c1543bfb20516c3f6394e58b3749ee"/>
-                          <file name="system.xml" hash="288dfc67e4af01044b7917da1b06705f"/>
+                          <file name="config.xml" hash="c87bd19b35b13bce7c73497e2186d04a"/>
+                          <file name="system.xml" hash="22c2dfd70f011ab1a199aca63d76aaf6"/>
                       </dir>
                       <dir name="sql">
                           <dir name="shoplogin_setup">
-                              <file name="mysql4-install-1.4.5.php" hash="0a3df1f0d5588d55211f78d322b09962"/>
+                              <file name="mysql4-install-1.4.6.php" hash="0a3df1f0d5588d55211f78d322b09962"/>
                           </dir>
                       </dir>
                   </dir>
@@ -53,7 +53,7 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
           </target>
           <target name="mageetc">
               <dir name="modules">
-                  <file name="ShopLogin_ShopLogin.xml" hash="5bdd7164440b18e0a112690510662f87"/>
+                  <file name="ShopLogin_ShopLogin.xml" hash="0f2146f7cca0eab8737a0b4579d64588"/>
               </dir>
           </target>
           <target name="magelocale">
