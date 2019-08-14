@@ -4,7 +4,7 @@
         <ShopLogin_ShopLogin>
             <active>true</active>
             <codePool>community</codePool>
-            <version>1.4.4</version>
+            <version>1.4.5</version>
         </ShopLogin_ShopLogin>
     </modules>
 </config>

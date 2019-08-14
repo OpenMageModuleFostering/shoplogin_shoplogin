@@ -70,7 +70,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         foreach($clientids as $k)
         {
           $details = explode(":", $k);
-          if(substr_count($details[0],$domain))
+          if(substr_count($details[0],$domain) || substr_count($domain, $details[0]))
           {
             return $details[1];
           }
@@ -94,7 +94,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         foreach($clientids as $k)
         {
           $details = explode(":", $k);
-          if(substr_count($details[0],$domain))
+          if(substr_count($details[0],$domain) || substr_count($domain, $details[0]))
           {
             return $details[1];
           }
@@ -103,7 +103,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function getIsUserConnected()
     {
-     // hier wird abgefragt ob der aktuelle User bereits mit ShopLogin über die Tabelle verknüpft ist.
+     // hier wird abgefragt ob der aktuelle User bereits mit ShopLogin Ã¼ber die Tabelle verknÃ¼pft ist.
 
      if(Mage::getSingleton('customer/session')->isLoggedIn())
      {
@@ -141,7 +141,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function get_user_isauthorized($signed_request = false)
     {
-        // hier werden die Basisdaten des Users (eMail, Vorname, Nachame, Token) mit Hilfe des AppSecret aus dem verschlüsselten Cookie herausgelesen
+        // hier werden die Basisdaten des Users (eMail, Vorname, Nachame, Token) mit Hilfe des AppSecret aus dem verschlÃ¼sselten Cookie herausgelesen
 
         if(isset($_COOKIE['shoplogin_'.$this->appid]) && $_COOKIE['shoplogin_'.$this->appid])
         {
@@ -178,7 +178,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function get_address_fromtoken($data_token = '', $addon='')
     {
-        // hier wird die API mit dem Token aus dem Cookie abgefragt, bei Erfolg liefert diese die Adressdaten des Users zurück
+        // hier wird die API mit dem Token aus dem Cookie abgefragt, bei Erfolg liefert diese die Adressdaten des Users zurÃ¼ck
 
         if(strlen($data_token) != 74)
         {
@@ -195,7 +195,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     protected function do_curl($url)
     {
-        // Abfrage der Api mit CURL mit einigen zusätzlichen Parametern wie Version etc.
+        // Abfrage der Api mit CURL mit einigen zusÃ¤tzlichen Parametern wie Version etc.
         // sowie einer Checksumme bestehend aus der "komplettenUrl#AppSecret"
 
         $url = $url."&version=magento-".Mage::getConfig()->getModuleConfig("ShopLogin_ShopLogin")->version."&shop_system=magento-".Mage::getVersion();
@@ -205,7 +205,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.4');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.5');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
