@@ -2,7 +2,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v1.4.1 for Magento
+ * v1.4.2 for Magento
  */
 
 $installer = $this;

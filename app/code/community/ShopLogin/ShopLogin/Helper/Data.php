@@ -2,7 +2,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v1.4.1 for Magento
+ * v1.4.2 for Magento
  */
 
 class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
@@ -65,7 +65,22 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function getClientId()
     {
-        return Mage::getStoreConfig('shoplogin/settings/clientid');
+        $domain = @getenv("HTTP_HOST");
+        if(!$domain) { $domain = @getenv("HTTP_X_FORWARDED_HOST"); }
+        $clientids = explode("_", Mage::getStoreConfig('shoplogin/settings/clientid'));
+        if(count($clientids) == 1)
+        {
+          $details = explode(":", $clientids[0]);
+          return $details[1];
+        }
+        foreach($clientids as $k)
+        {
+          $details = explode(":", $k);
+          if(substr_count($details[0],$domain))
+          {
+            return $details[1];
+          }
+        }
     }
 
     public function getRecommendationLicenseKey()
@@ -75,7 +90,22 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
 
     public function getClientSecret()
     {
-        return Mage::getStoreConfig('shoplogin/settings/clientsecret');
+        $domain = @getenv("HTTP_HOST");
+        if(!$domain) { $domain = @getenv("HTTP_X_FORWARDED_HOST"); }
+        $clientids = explode("_", Mage::getStoreConfig('shoplogin/settings/clientsecret'));
+        if(count($clientids) == 1)
+        {
+          $details = explode(":", $clientids[0]);
+          return $details[1];
+        }
+        foreach($clientids as $k)
+        {
+          $details = explode(":", $k);
+          if(substr_count($details[0],$domain))
+          {
+            return $details[1];
+          }
+        }
     }
 
     public function getIsUserConnected()
@@ -182,7 +212,7 @@ class ShopLogin_ShopLogin_Helper_Data extends Mage_Core_Helper_Abstract  {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.1');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'sl-magento-1.4.2');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 

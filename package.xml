@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>ShopLogin_ShopLogin</name>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
@@ -17,8 +17,8 @@ Visit https://www.shoplogin.com/for-merchants/ for more informations and technic
 Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and insert your App-ID and App Secret in the "ShopLogin"-Tab in your Magento configuration panel. After that you can easily activate the ShopLogin-Features.</description>
     <notes>Basis Extension for ShopLogin including the Plugins "Log in with ShopLogin" and "ShopLogin global Wish List".</notes>
     <authors><author><name>Shoplogin</name><user>ShopLogin</user><email>developers@shoplogin.com</email></author></authors>
-    <date>2014-12-19</date>
-    <time>12:00:00</time>
+    <date>2015-02-24</date>
+    <time>22:39:18</time>
     <contents>
         <target name="magecommunity">
             <dir name="ShopLogin">
@@ -27,25 +27,25 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                         <dir name="Adminhtml">
                             <file name="Notifications.php" hash="dfc6140694dfc535892c0457554672ee"/>
                         </dir>
-                        <file name="Default.php" hash="d5e3dccc81c3fe9e2f322015b0daa42a"/>
+                        <file name="Default.php" hash="e3cf7139092d597f7814b6fbd894d196"/>
                       </dir>
                       <dir name="Helper">
-                          <file name="Data.php" hash="44e434cd2b0d3f163a6bea7c932f18cc"/>
+                          <file name="Data.php" hash="268e151e960eab67636ece43a761086d"/>
                       </dir>
                       <dir name="Model">
-                          <file name="Shoplogin.php" hash="a4da88de253044a3d6039f05a00bf651"/>
+                          <file name="Shoplogin.php" hash="a24ea14a4af11864646b4c1eca33cbc9"/>
                       </dir>
                       <dir name="controllers">
-                          <file name="CustomerController.php" hash="c2e0723ce5d3ad507a1fa4fa2521fbfe"/>
+                          <file name="CustomerController.php" hash="0428e28e3b0a52205282039acf5a3326"/>
                       </dir>
                       <dir name="etc">
-                          <file name="adminhtml.xml" hash="3e6aa288f687a64c82f91ecc0ff61861"/>
-                          <file name="config.xml" hash="f1f33715e008f9792f2dcf0e0ce3c15f"/>
-                          <file name="system.xml" hash="4678900a4977947d5001efe1a74d4344"/>
+                          <file name="adminhtml.xml" hash="af0e4aa22ec9f0aebe106b5fc2c400ef"/>
+                          <file name="config.xml" hash="4e8da71be7f3a1ae18316275a4cada95"/>
+                          <file name="system.xml" hash="95444f8139f0f946ce6711bb027dafc2"/>
                       </dir>
                       <dir name="sql">
                           <dir name="shoplogin_setup">
-                              <file name="mysql4-install-1.4.1.php" hash="2f3485b4aeea4dea01389634c380f756"/>
+                              <file name="mysql4-install-1.4.2.php" hash="d0543c4ad20cf9763a90c9a0e2bdb092"/>
                           </dir>
                       </dir>
                   </dir>
@@ -53,7 +53,7 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
           </target>
           <target name="mageetc">
               <dir name="modules">
-                  <file name="ShopLogin_ShopLogin.xml" hash="ddcd1312cc1f117753d6bc4b2bbbb5a6"/>
+                  <file name="ShopLogin_ShopLogin.xml" hash="adccb95fee8fab328b6184babe9b397a"/>
               </dir>
           </target>
           <target name="magelocale">
@@ -66,11 +66,11 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                   <dir name="default">
                       <dir name="default">
                           <dir name="layout">
-                              <file name="shoplogin.xml" hash="52fb6b4682e8554c053815466928961f"/>
+                              <file name="shoplogin.xml" hash="bcd485a4e85f58deb55b727504c561db"/>
                           </dir>
                           <dir name="template">
                               <dir name="shoplogin">
-                                  <file name="notifications.phtml" hash="f54451ea2855ab80f249c15435ca21ca"/>
+                                  <file name="notifications.phtml" hash="5d247095fdcda3adc23c2a00aa9d93d5"/>
                               </dir>
                           </dir>
                       </dir>
@@ -80,7 +80,7 @@ Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and 
                   <dir name="base">
                       <dir name="default">
                           <dir name="layout">
-                              <file name="shoplogin.xml" hash="96e0d8e6f62dcc6ca0b3efc40fb6fd2b"/>
+                              <file name="shoplogin.xml" hash="c9110dd38baea7fb2f9e4073643f589e"/>
                           </dir>
                           <dir name="template">
                               <dir name="shoplogin">
