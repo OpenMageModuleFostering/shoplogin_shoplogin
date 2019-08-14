@@ -3,10 +3,10 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.1 for Magento
+ * v0.9.2 for Magento
  */
 -->
-<layout version="0.9.1">
+<layout version="0.9.2">
     <customer_account_login translate="label">
         <reference name="content">
             <block type="core/template" name="shoplogin.login.button" template="shoplogin/button.phtml" after="customer_form_login" />

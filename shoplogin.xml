@@ -1,0 +1,115 @@
+<_>
+   <form_key>g3j5wUWYJ0qAmoKq</form_key>
+   <name>ShopLogin_ShopLogin</name>
+   <channel>community</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary>Basis Extension for ShopLogin including the Plugins &quot;Log in with ShopLogin&quot; and &quot;ShopLogin global Wish List&quot;.</summary>
+   <description>This Extension is the Basis Extension for ShopLogin.
+It includes the Plugins &quot;Log in with ShopLogin&quot; and &quot;ShopLogin global Wish List&quot;.
+
+More Comfort for your Customers.
+Better Usability. Higher Conversion Rate.&amp;#xD;
+Visit https://www.shoplogin.com/for-merchants/ for more informations and technical details.
+
+Register your Online Store (https://www.shoplogin.com/en/account/merchant/) and insert your App-ID and App Secret in the &quot;ShopLogin&quot;-Tab in your Magento configuration panel. After that you can easily activate the ShopLogin-Features.</description>
+   <license>OSL v3.0</license>
+   <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
+   <version>0.9.2</version>
+   <stability>stable</stability>
+   <notes>Basis Extension for ShopLogin including the Plugins &quot;Log in with ShopLogin&quot; and &quot;ShopLogin global Wish List&quot;.</notes>
+   <authors>
+      <name>
+         <name>Shoplogin</name>
+      </name>
+      <user>
+         <user>ShopLogin</user>
+      </user>
+      <email>
+         <email>developers@shoplogin.com</email>
+      </email>
+   </authors>
+   <depends_php_min>5.1.0</depends_php_min>
+   <depends_php_max>6.0.0</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name/>
+            <name>Mage_Core_Modules</name>
+         </name>
+         <channel>
+            <channel/>
+            <channel>community</channel>
+         </channel>
+         <min>
+            <min/>
+            <min>1.7.0.0</min>
+         </min>
+         <max>
+            <max/>
+            <max>1.8.0</max>
+         </max>
+         <files>
+            <files>                           </files>
+            <files>                           </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name>Core</name>
+            <name>curl</name>
+         </name>
+         <min>
+            <min/>
+            <min/>
+         </min>
+         <max>
+            <max/>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>magelocal</target>
+         <target>magecommunity</target>
+         <target>mageetc</target>
+         <target>magelocale</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+      </target>
+      <path>
+         <path/>
+         <path>ShopLogin/ShopLogin</path>
+         <path>modules/ShopLogin_ShopLogin.xml</path>
+         <path>de_DE/ShopLogin_ShopLogin.csv</path>
+         <path>frontend/base/default/layout/shoplogin.xml</path>
+         <path>frontend/base/default/template/shoplogin/</path>
+      </path>
+      <type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>file</type>
+         <type>file</type>
+         <type>dir</type>
+      </type>
+      <include>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+      </include>
+      <ignore>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+      </ignore>
+   </contents>
+</_>

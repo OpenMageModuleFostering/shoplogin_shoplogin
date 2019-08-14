@@ -3,13 +3,13 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.1 for Magento
+ * v0.9.2 for Magento
  */
 -->
 <config>
     <modules>
         <ShopLogin_ShopLogin>
-            <version>0.9.1</version>
+            <version>0.9.2</version>
         </ShopLogin_ShopLogin>
     </modules>
 

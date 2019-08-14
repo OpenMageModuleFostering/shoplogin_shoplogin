@@ -2,7 +2,7 @@
 /*
  * Log in with ShopLogin for Magento
  * https://www.shoplogin.com/for-merchants/
- * v0.9.1 for Magento
+ * v0.9.2 for Magento
  */
 
 class ShopLogin_ShopLogin_CustomerController extends Mage_Core_Controller_Front_Action
