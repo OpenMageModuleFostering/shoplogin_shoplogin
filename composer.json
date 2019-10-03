@@ -1,5 +1,7 @@
 {
     "keywords": [
         "openmage-module"
-    ]
+    ],
+    "name": "openmage-module-fostering\/shoplogin_shoplogin",
+    "license": "OSL-3.0"
 }
